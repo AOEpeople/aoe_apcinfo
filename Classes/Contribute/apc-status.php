@@ -34,7 +34,7 @@ if (file_exists("apc.conf.php")) include("apc.conf.php");
 
 ////////// BEGIN OF DEFAULT CONFIG AREA ///////////////////////////////////////////////////////////
 
-defaults('USE_AUTHENTICATION',1);			// Use (internal) authentication - best choice if
+defaults('USE_AUTHENTICATION',0);			// Use (internal) authentication - best choice if
 											// no other authentication is available
 											// If set to 0:
 											//  There will be no further authentication. You
@@ -879,8 +879,8 @@ EOB;
 	echo
 		graphics_avail() ?
 			  '<tr>'.
-			  "<td class=td-0><img alt=\"\" $size src=\"$PHP_SELF?IMG=1&$time\"></td>".
-			  "<td class=td-1><img alt=\"\" $size src=\"$PHP_SELF?IMG=2&$time\"></td></tr>\n"
+			  "<td class=td-0><img alt=\"\" $size src=\"$PHP_SELF&IMG=1&$time\"></td>".
+			  "<td class=td-1><img alt=\"\" $size src=\"$PHP_SELF&IMG=2&$time\"></td></tr>\n"
 			: "",
 		'<tr>',
 		'<td class=td-0><span class="green box">&nbsp;</span>Free: ',bsize($mem_avail).sprintf(" (%.1f%%)",$mem_avail*100/$mem_size),"</td>\n",
@@ -925,7 +925,7 @@ EOB;
 	if (graphics_avail()) {
 		$size='width='.(2*GRAPH_SIZE+150).' height='.(GRAPH_SIZE+10);
 		echo <<<EOB
-			<img alt="" $size src="$PHP_SELF?IMG=3&$time">
+			<img alt="" $size src="$PHP_SELF&IMG=3&$time">
 EOB;
 	}
 	echo <<<EOB
